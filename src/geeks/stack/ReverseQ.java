@@ -1,4 +1,4 @@
-package geeks.Que;
+package geeks.stack;
 
 import java.util.LinkedList;
 import java.util.Queue;

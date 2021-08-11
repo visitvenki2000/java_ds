@@ -1,0 +1,11 @@
+
+1) Clonable marker interface 
+
+https://www.youtube.com/watch?v=KWbr7B5LDzs&list=PLsyeobzWxl7p4FxA2_sNM0cswUWC-QcfJ&index=3
+
+will it work if obj has another object ? check....all objects shud imlement clonable interface 
+
+
+
+
+

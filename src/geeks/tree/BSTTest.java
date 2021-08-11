@@ -2,6 +2,8 @@ package geeks.tree;
 
 public class BSTTest {
 
+	
+	public int previous =Integer.MIN_VALUE;
 	public BSTTest() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,6 +30,8 @@ public class BSTTest {
 		BSTTest test = new BSTTest();
 		System.out.println("isBST : "+test.isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE));
 		
+		System.out.println("isBST2 : "+test.isBst2(root));
+		
 	}
 	
 	public boolean isBST(Node root, int min, int max) {
@@ -38,7 +42,27 @@ public class BSTTest {
 		
 	  return (root.data>min && root.data<max && isBST(root.left,min,root.data) && isBST(root.right,root.data,max));
 	}
+	
+	// in order travel - check if next element is greater .... use previous variable 
+	
 
+	public boolean isBst2(Node root) {
+		
+		// base condition 
+		
+		if(root==null)
+			return true;
+		
+		if(!isBst2(root.left)) return false; 
+		
+		
+		if(root.data<=previous) return false;
+		
+		previous = root.data;
+		
+		return isBst2(root.right);
+		
+	}
 }
 
 /*

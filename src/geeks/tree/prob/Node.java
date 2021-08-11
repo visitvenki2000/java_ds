@@ -1,4 +1,4 @@
-package geeks.tree;
+package geeks.tree.prob;
 
 public class Node {
 

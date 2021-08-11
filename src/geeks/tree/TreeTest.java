@@ -2,7 +2,14 @@ package geeks.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
+/*
+ * Level order line by line -- important 
+ * check count method and adding null object ..
+ * 
+ * Level order in reverse print
+ */
 public class TreeTest {
 
 	public static void main(String[] args) {
@@ -46,7 +53,21 @@ public class TreeTest {
 		
 		test.printByLineLevelOrder2(root);
 		
-		System.out.println(" Heigh-t "+test.getHeight(root));
+		System.out.println("--------------Level  order reverse ----------");
+		test.reversePrint(root);
+		System.out.println("");
+		System.out.println("--------------Level  order reverse ----------end ");
+		System.out.println("--------------Level  order spiral-----------");
+		
+		//test.spiralPrint(root);
+		System.out.println("--------------Level  order COnnect at same level-----------");
+		
+		test.connectNodesSameLevel(root);
+		
+		//System.out.println(" Heigh-t "+test.getHeight(root));
+		
+		Stack<Integer> st = new Stack<Integer>();
+		//st.pop()
 	}
 	
 	/*
@@ -72,16 +93,11 @@ public class TreeTest {
 	}
 
 	public void inOrder(Node root) {
-		
-		
 		if(root==null)
 			return;
-
 		inOrder(root.left);	
-		System.out.print(" - "+root.data+" - ");
+		System.out.print(root.data+" ");
 		inOrder(root.right);
-		
-		
 	}
 	
 	public void postOrder(Node root) {
@@ -193,6 +209,130 @@ public class TreeTest {
 		
 		
 	}
+	
+	public void reversePrint(Node node) 
+    {
+     	     	Queue<Node> q = new LinkedList<Node>() ;
+     		q.add(node);
+     		Stack<String> stack = new Stack<String>();
+     		while(!q.isEmpty()){
+     		    
+     		 int count = q.size();
+     		 StringBuffer sb = new StringBuffer();
+     		 
+     		 for(int i=0;i<count;i++) {
+     		     Node temp = q.remove();
+     		   if(temp.left!=null)
+     		   q.add(temp.left);
+     		   if(temp.right!=null)
+     		   q.add(temp.right);
+     		   
+     		      //System.out.print(temp.data+" ");
+     		      sb.append(temp.data+" ");
+     		 }
+     		 
+     		      stack.add(sb.toString());
+     		
+     		}
+     		
+     		while(!stack.isEmpty()){
+     		    String temp = stack.pop();
+     		    System.out.print(temp+" ");
+     		    
+     		}
+    }
+	
+	public void spiralPrint(Node root) 
+    {
+     	     	Queue<Node> q = new LinkedList<Node>() ;
+     		q.add(root);
+     		Stack<String> stack = new Stack<String>();
+     		StringBuffer sb = new StringBuffer();
+     		boolean flag =true;
+     		while(!q.isEmpty()){
+     		    
+     		 int count = q.size();
+     
+     		 
+     		 for(int i=0;i<count;i++) {
+     		     Node temp = q.remove();
+     		   if(temp.left!=null)
+     		   q.add(temp.left);
+     		   if(temp.right!=null)
+     		   q.add(temp.right);
+     		   
+     		      //System.out.print(temp.data+" ");
+     		   if(flag)
+     		  stack.add(temp.data+" ");
+     		   else 
+     		  sb.append(temp.data+" ");
+     		 }
+     		 
+     		     // stack.add(sb.toString());
+			if (flag) {
+				while (!stack.isEmpty()) {
+					String temp = stack.pop();
+					System.out.print(temp );
+					flag =false;
+
+				}
+				
+			}else {
+					
+					System.out.print(sb);
+					flag =true;
+					sb = new StringBuffer();
+				}
+
+			
+     		
+     		}
+     		
+     		inOrder(root);
+     		
+     		
+    }
+	/*
+	 * connect nodes at same level and print level order and in order traversal ;
+	 */
+	public void connectNodesSameLevel(Node root) 
+    {
+     	     	Queue<Node> q = new LinkedList<Node>() ;
+     		q.add(root);
+     		
+     		while(!q.isEmpty()){
+     		    
+     		 int count = q.size();
+     		 StringBuffer sb = new StringBuffer();
+     		Node prev = null;
+     		 for(int i=0;i<count;i++) {
+     		     Node temp = q.remove();
+     		   if(temp.left!=null)
+     		   q.add(temp.left);
+     		   if(temp.right!=null)
+     		   q.add(temp.right);
+     		   
+     		      System.out.print(temp.data+" "); // level order traversal 
+     		      sb.append(temp.data+" ");
+     		      if(prev == null)
+     		    	 prev =temp;
+     		      else {
+     		    	  prev.nextRight =temp;
+     		    	  prev = temp;
+     		      }
+     		 }
+     		 
+     		  
+     		
+     		}
+     		// in order traversal 
+     	   System.out.println(""); //new line 
+     	   
+     	   inOrder(root);
+     	
+    }
+	
+	
 }
 
 /*
@@ -214,5 +354,19 @@ Post order
  - 7 -  - 12 -  -  - 
  - 4 -  - 6 -  - 15 -  - 18 - 
  
+ ------------------Reverse print 
  
+  -
+--------------Level  order-----------
+ - 10 -  - 7 -  - 12 -  - 4 -  - 6 -  - 15 -  - 18 -  -
+--------------Level  order Line by line-----------
+4 6 15 18  7 12  10  
+
+------------------------------
+--------------Level  order Line by line-----------
+ - 10 -  -
+ - 7 -  - 12 -  -
+ - 4 -  - 6 -  - 15 -  - 18 -  -
+--------------Level  order spiral-----------
+10 7 12 18 15 6 4 
  */

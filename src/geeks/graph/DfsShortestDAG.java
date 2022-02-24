@@ -116,12 +116,3 @@ public class DfsShortestDAG {
 
 }
 
-class Pair {
-	
-	int vertex;
-	int weight;
-	Pair(int ver, int wei){
-		vertex = ver;
-		weight =wei;
-	}
-}

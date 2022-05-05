@@ -40,8 +40,7 @@ public class BFSDisc {
 		
 		public static void bfs(ArrayList<ArrayList<Integer>> adg, int s,boolean[] visited) {
 			
-			// initialize vertics with boolean 
-	;
+		
 
 			Queue<Integer> q = new LinkedList<Integer>();
 			q.add(s); // add source
@@ -83,5 +82,95 @@ public class BFSDisc {
 			return count;
 			
 		}
+		
+		public static void bfsShort(ArrayList<ArrayList<Integer>> adg, int s,int dest,boolean[] visited) {
+			
+			
+
+			Queue<Integer> q = new LinkedList<Integer>();
+			q.add(s); // add source
+			visited[s] =true; // mark source as visited 
+			int dist =0;
+			int ans =0;
+			while(!q.isEmpty()) {
+				
+				
+				int size = q.size();
+				
+				
+				while(size>0) {
+					size--;
+			 int u=	q.poll();
+				System.out.print(" "+u);
+				
+				if(u==dest)
+					ans=dist;
+				
+			 ArrayList<Integer> tempList = adg.get(u);
+			 
+			 for(int i=0;i<tempList.size();i++) {
+				 
+				 if(visited[tempList.get(i)]==false) {
+				 q.add(tempList.get(i)); 
+				 visited[tempList.get(i)] =true;
+				 }
+				 
+			 }
+			 
+				}
+				dist++;
+				
+			}
+			
+			System.out.println("Distance "+ans);
+
+		}
+		
+int [] x = {-2,-1,1,1,-2,2,2,-1};
+int [] y = {-1,-2,-2,2,1,-1,1,2} ;
+
+public static void bfsKnight(ArrayList<ArrayList<Integer>> adg, int s,int dest,boolean[] visited) {
+			
+			
+
+			Queue<Integer> q = new LinkedList<Integer>();
+			q.add(s); // add source
+			visited[s] =true; // mark source as visited 
+			int dist =0;
+			int ans =0;
+			while(!q.isEmpty()) {
+				
+				
+				int size = q.size();
+				
+				
+				while(size>0) {
+					size--;
+			 int u=	q.poll();
+				System.out.print(" "+u);
+				
+				if(u==dest)
+					ans=dist;
+				
+			 ArrayList<Integer> tempList = adg.get(u);
+			 
+			 for(int i=0;i<tempList.size();i++) {
+				 
+				 if(visited[tempList.get(i)]==false) {
+				 q.add(tempList.get(i)); 
+				 visited[tempList.get(i)] =true;
+				 }
+				 
+			 }
+			 
+				}
+				dist++;
+				
+			}
+			
+			System.out.println("Distance "+ans);
+
+		}
+
 
 }

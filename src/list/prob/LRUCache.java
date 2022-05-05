@@ -1,12 +1,13 @@
 package list.prob;
 
 import java.util.Hashtable;
-
+//  use Hash and double linked list.... hash for read O(1) ,
 public class LRUCache {
+	
 
 	/// Method 1 - using array - search , insert takes O(n)
 	// size = 4
-	// insert new iteme in start
+	// insert new iteme in start....head 
 	// if full remove item in end
 	// move get item to start if present in cache
 	// maintain tail pointer to access item to remove O(1) time

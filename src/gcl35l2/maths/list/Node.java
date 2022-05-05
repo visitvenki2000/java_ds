@@ -1,4 +1,4 @@
-package list;
+package gcl35l2.maths.list;
 
 public class Node {
 
@@ -6,7 +6,7 @@ public class Node {
 	int data ;
 	public Node next;
 
-	public Node(int data){
+	Node(int data){
 		this.data= data;
 	}
 }

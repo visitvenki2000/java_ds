@@ -1,5 +1,7 @@
 package geeksjava.core;
 
+import java.util.Calendar;
+
 public class ExceptionTest  {
 
 	
@@ -17,6 +19,21 @@ public class ExceptionTest  {
 		
 		int i =0;
 		try {
+			
+			
+			Calendar currentCal = Calendar.getInstance();
+	 
+	    	
+			currentCal.set(Calendar.YEAR, 2024);
+			currentCal.set(Calendar.MONTH, 11-1);		
+			currentCal.set(Calendar.DAY_OF_MONTH, 9);
+			
+		
+			currentCal.set(Calendar.HOUR, 11);
+			currentCal.set(Calendar.MINUTE, 9);
+			currentCal.set(Calendar.SECOND, 2);
+			System.out.println("date "+currentCal.getTime());
+			
 		i++;
 		testExc(i);
 		testExcRun(i);

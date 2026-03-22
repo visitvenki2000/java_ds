@@ -31,18 +31,20 @@ public class DfsCycle {
 		addEdge(adjGraph,4,5); */
 		
 		
-		addEdge(adjGraph,1,3);
-		addEdge(adjGraph,3,4);	
+		addEdge(adjGraph,1,2);
+		addEdge(adjGraph,2,3);	
 		//addEdge(adjGraph,1,2);
 		
-		addEdge(adjGraph,2,5);
+		/*addEdge(adjGraph,2,5);
 		addEdge(adjGraph,5,6);
 		addEdge(adjGraph,5,8);
 		addEdge(adjGraph,6,7);
-		addEdge(adjGraph,8,7);
+		addEdge(adjGraph,8,7); */
 	
 
-	System.out.println(" Cycle "+dfsCycle(adjGraph,9));
+	//System.out.println(" Cycle "+dfsCycle(adjGraph,9));
+	System.out.println(" Cycle "+isCycle2(4,adjGraph)); // 24apr 23 ... working in GFG
+	//https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqazBKQnlRXzk2ck5YR25HdzdBdUd3OUdXRU1Md3xBQ3Jtc0trV2RTdnBuY2otMzRQZ2R3ZDZ1Y1J0Vl95eG1rWXVqamFsRVMySThvQVF3QlJPTUJyYnlZd3hvS2lJd2ptVHotLWFOdGpLcmFtaU42T0hDaWliMTEtd2hoUDF6NkM3LUtqVUl1a1FBODdVazRvZWU3VQ&q=https%3A%2F%2Fbit.ly%2F3cZMJXp&v=zQ3zgFypzX4
 	
 			
 		}
@@ -100,6 +102,43 @@ public class DfsCycle {
 			
 			return false;
 		}
+		
+	    public static boolean isCycle2(int V, ArrayList<ArrayList<Integer>> adj) {
+	        // Code here
+	        
+	          boolean [] visited = new boolean[V];
+	        
+	        for(int i=1;i<V;i++){
+	            if(!visited[i]) {
+	             if(Dfs2(i,adj,visited,-1)) return true; 
+	             
+	            }
+	        }
+	        return false;
+	    }
+	    
+	    public static boolean Dfs2(int current, ArrayList<ArrayList<Integer>> adj,boolean[] visited,int parent){
+	        
+	        
+	        visited[current] = true;
+	        ArrayList<Integer> list= adj.get(current);
+	        for(int i=0;i<list.size();i++){
+	            int temp = list.get(i);
+	            if(visited[temp]==false) {
+	             if(Dfs2(temp,adj,visited,current)) {
+	            	 return true;
+	             }
+	             }
+	            else{
+	                
+	                if(temp!=parent) {
+	                	System.out.println("temp"+temp+"-parent "+parent);
+	                return true;
+	                }
+	            }
+	        }
+	        return false;
+	    }
 	
 	
 

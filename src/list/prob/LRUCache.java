@@ -83,26 +83,26 @@ public class LRUCache {
 				// remove item and move to start i.e head
 				// 1 connect prev and next nodes of current
 				// case 1 capa 1 , case 2 cap 2 ;;
-				
-				Node2 prev = item.left;  //50
-				Node2 next = item.right;  //30
-				if(item==tail)
+
+				Node2 prev = item.left; // 50
+				Node2 next = item.right; // 30
+				if (item == tail)
 					tail = prev;
-				
-				if(item.left==head)
+
+				if (item.left == head)
 					tail.left = item;
-				
-				// move item to head 
-				item.left = null ;
-				item.right = head; // if head.right null null is set to right 
-				head = item ;
-				
-				if(prev!=null) {
-					
+
+				// move item to head
+				item.left = null;
+				item.right = head; // if head.right null null is set to right
+				head = item;
+
+				if (prev != null) {
+
 					prev.right = next;
 				}
-	if(next!=null) {
-					
+				if (next != null) {
+
 					next.left = prev;
 				}
 
@@ -113,8 +113,8 @@ public class LRUCache {
 		} else {
 			// need to insert new node
 			// case 1 if full
-			System.out.println("size---"+size);
-			
+			System.out.println("size---" + size);
+
 			if (size == capacity) {
 				// if size reached capacity ... remove last element ....
 				hashTable.remove(tail.data);
@@ -125,15 +125,15 @@ public class LRUCache {
 			}
 			// insert node in front
 			Node2 temp = new Node2(input);
-			hashTable.put(input,temp);
+			hashTable.put(input, temp);
 			if (head == null) {
 				head = temp;
 				tail = temp;
 				size++;
 			} else {
-			
+
 				temp.right = head;
-				head.left = temp;  // tail.left also becomes temp
+				head.left = temp; // tail.left also becomes temp
 				head = temp;
 				size++;
 			}

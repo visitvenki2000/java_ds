@@ -7,7 +7,10 @@ public class Test1 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		System.out.println(testAnagram("geeks","ekegt"));
+		String academicyear = "2022";
+		  String[] result = academicyear.split("-");
+		  System.out.println(result[0]);
+		//System.out.println(testAnagram("geeks","ekegt"));
 	}
 	
 	public static boolean testAnagram(String s1,String s2) {

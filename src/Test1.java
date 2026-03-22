@@ -6,55 +6,57 @@ import java.util.Scanner;
 public class Test1 {
 
 	static final Integer i1=1;
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-System.out.println("test");
-BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String mobile_up ="91 4hhhh 9666139666";
+		String res = mobile_up.substring(mobile_up.trim().length()-10,mobile_up.trim().length());
+		System.out.println("res  "+res);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		double result =0;
+		long speedCrossed =40;
+		long totalCount =60;
+		result = (double)speedCrossed/(double)totalCount*100 ;
+		System.out.println("result --"+result);
+		
 
-String input1 = "";
-String  input2 = "";
-try {
-	 input1 = br.readLine();
-	 
-	input2 = br.readLine();
-} catch (IOException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}  
+		String input1 = "";
+		String input2 = "";
+		try {
+			input1 = br.readLine();
 
-String[] currencies = input2.split(" ");
-for(String s:currencies ) {
-	
-	System.out.println("loop "+s);
-}
+			input2 = br.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-//System.out.println("input1 "+input1);
-//System.out.println("input1 "+input2);
-Scanner myObj = new Scanner(System.in);
+		String[] currencies = input2.split(" ");
+		for (String s : currencies) {
 
- 
+			System.out.println("loop " + s);
+		}
 
+		// System.out.println("input1 "+input1);
+		// System.out.println("input1 "+input2);
+		Scanner myObj = new Scanner(System.in);
 
-int age = myObj.nextInt();
-int age2 = myObj.nextInt();
-System.out.println("----age "+age);
-System.out.println("---- age2 "+age2+ "--"+myObj.nextLine());
+		int age = myObj.nextInt();
+		int age2 = myObj.nextInt();
+		System.out.println("----age " + age);
+		System.out.println("---- age2 " + age2 + "--" + myObj.nextLine());
 
-int n1 = Integer.parseInt("4");
+		int n1 = Integer.parseInt("4");
 
-//System.out.println("testn1 "+n1);
-/*
-int b = 12;
-if(b%3==0 && b%5==0)
-	System.out.println("3 and 5");
-else if(b%3==0 )
-	System.out.println("3 ");
+		// System.out.println("testn1 "+n1);
+		/*
+		 * int b = 12; if(b%3==0 && b%5==0) System.out.println("3 and 5"); else
+		 * if(b%3==0 ) System.out.println("3 ");
+		 * 
+		 */
+		class Inner {
 
-*/
-class Inner {
-	
-	
-}
+		}
 	}
 
 }
